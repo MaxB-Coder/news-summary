@@ -1,0 +1,36 @@
+:root {
+    --bg-color: rgb(20, 20, 20);
+}
+
+main {
+    background-color: var(--bg-color) !important;
+    color: rgba(200, 200, 200, 1) !important;
+}
+
+html {
+    background-color: var(--bg-color) !important;
+}
+
+.card {
+    background: rgba(200, 200, 200, 0.01) !important;
+    color: rgba(200, 200, 200, 1) !important;
+}
+
+.logo {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.guardianLink {
+    text-decoration: none !important;
+    color: rgba(200, 200, 200, 1) !important;
+}
+
+nav {
+    background: rgba(20, 20, 20);
+}
+
+footer {
+    background: rgba(20, 20, 20);
+    font-size: xx-small;
+}
