@@ -1,4 +1,4 @@
-![News Summary Challenge](./Documentation/News%F0%9F%97%9E%EF%B8%8FSummary.png)
+![News Summary Challenge](./Documentation/newsSummary.png)
 
 ## A single page application in React that send requests to the Guardian API to get Headline and Article data before displaying them.
 
