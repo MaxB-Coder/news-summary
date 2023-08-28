@@ -4,6 +4,9 @@
 
 ## Screenshots
 
+![Home Screen](./Documentation/screenshots/homeScreen.png)
+![Article Page](./Documentation/screenshots/articlePage.png)
+
 ## Installation and Setup
 
 1. **Clone the repository**:
