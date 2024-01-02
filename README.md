@@ -45,5 +45,5 @@ Visit the local host server that is in your console to view the project!
 
 ## Acknowledgements
 
-- The Guardian for the api.
+- The Guardian for the API.
 - Digital Futures for setting this project as a challenge.
