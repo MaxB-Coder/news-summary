@@ -1,6 +1,8 @@
 ![News Summary Challenge](./Documentation/newsSummary.png)
 
-## A single page application in React that send requests to the Guardian API to get Headline and Article data before displaying them.
+## A single page application in React that sends requests to the Guardian API to get Headline and Article data before displaying them.
+
+Overview: The News Summary Challenge is a simple news app that uses the Guardian News API (https://open-platform.theguardian.com/) to display the current News, the articles are displayed as clickable links that open the full article.
 
 ## Screenshots
 
