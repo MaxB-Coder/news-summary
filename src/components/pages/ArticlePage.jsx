@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import PropTypes from "prop-types";
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-import { processId } from "../../utils/processId";
+import { processId } from '../../utils/processId';
 
 const ArticlePage = ({ newsData }) => {
   const { id } = useParams();
@@ -24,18 +24,18 @@ const ArticlePage = ({ newsData }) => {
 
   return (
     <>
-      <article className="my-5 py-5" key={id}>
-        <div className="card mx-5 px-5 text-center d-flex justify-content-center">
-          <a className="link-light guardianLink" href={articleLink}>
-            <h3 className="card-body pb-4 guardianLink">{headline}</h3>
+      <article className='article-page my-5 py-5' key={id}>
+        <div className='card mx-lg-5 px-lg-5 mx-2 px-3 text-center d-flex justify-content-center'>
+          <a className='link-light guardianLink' href={articleLink}>
+            <h3 className='card-body pb-4 guardianLink'>{headline}</h3>
           </a>
           <img
-            id="Thumbnail"
+            id='Thumbnail'
             src={thumbnail}
-            alt="Article Thumbnail"
-            className="card-img-top col-start-6 px-5 text-center mx-auto w-50"
+            alt='Article Thumbnail'
+            className='card-img-top px-lg-5 px-3 text-center mx-auto w-75 w-lg-50'
           />
-          <p className="center-text col-10 mx-auto pt-4 px-5">{bodyText}</p>
+          <p className='center-text mx-auto pt-4 px-lg-5 px-3'>{bodyText}</p>
         </div>
       </article>
     </>
