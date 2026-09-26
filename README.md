@@ -24,7 +24,15 @@ Overview: The News Summary Challenge is a simple news app that uses the Guardian
     npm install
    ```
 
-3. **Run the Server**:
+3. **Add your Guardian API key**:
+
+   ```bash
+    cp .env.example .env
+   ```
+
+   Then set `VITE_GUARDIAN_API_KEY` in `.env` to a key from the [Guardian Open Platform](https://open-platform.theguardian.com/access/). `.env` is git-ignored.
+
+4. **Run the Server**:
 
    ```bash
     npm run dev
