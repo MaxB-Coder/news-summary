@@ -7,7 +7,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
+    {/* BASE_URL is / normally, and /demos/news-summary/ in the portfolio demo */}
+    <Router basename={import.meta.env.BASE_URL}>
       <App />
     </Router>
   </React.StrictMode>,
