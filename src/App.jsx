@@ -12,12 +12,14 @@ import ArticlePage from "./components/pages/ArticlePage";
 const App = () => {
 
   const [newsData, setNewsData] = useState({});
+  const [failed, setFailed] = useState(false);
 
   const getData = async() => {
     const data = await getNewsData();
     if (data instanceof Error) {
       console.error(data.message);
       setNewsData([]);
+      setFailed(true);
     } else {
       setNewsData(data);
     }
@@ -31,6 +33,11 @@ const App = () => {
     <>
       <main>
         <Header />
+        {failed && (
+          <p role="alert" className="text-center pt-5 mt-5">
+            Couldn&apos;t load today&apos;s headlines. Please try again later.
+          </p>
+        )}
         <Routes className='content pt-5 mt-5 mb-5'>
           <Route path="/" element={<Headlines newsData={newsData} />} />
           <Route path="/article/:id" element={<ArticlePage newsData={newsData} />} />
