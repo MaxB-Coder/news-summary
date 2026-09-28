@@ -7,5 +7,5 @@ expect.extend(matchers);
 afterEach(() => {
   cleanup();
 });
-// jsdom doesn't scroll
-window.scrollTo = () => {};
+// jsdom doesn't scroll (and node-environment tests have no window)
+if (typeof window !== 'undefined') window.scrollTo = () => {};
