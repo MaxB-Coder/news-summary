@@ -4,8 +4,8 @@ const FIELDS = 'order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2Cbody
 // The article HTML, for its paragraphs (see utils/articleBlocks.js)
 const QUERY = `${FIELDS}%2Cbody`;
 
-// The portfolio's demo build sets VITE_NEWS_URL to its own proxy, which adds
-// the Guardian key on the server, so no key ships in the demo bundle.
+// Production builds set VITE_NEWS_URL (see .env.production) to a proxy on their
+// own origin, which adds the Guardian key on the server, so no key ships in the bundle.
 function newsUrl(query) {
   const proxy = import.meta.env.VITE_NEWS_URL;
   if (proxy) return `${proxy}/search?${query}`;
