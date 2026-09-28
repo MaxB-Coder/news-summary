@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { articleBlocks } from '../../utils/articleBlocks';
 import { processId } from '../../utils/processId';
+import { timeAgo } from '../../utils/timeAgo';
 
 const ArticlePage = ({ newsData }) => {
   const { id } = useParams();
@@ -25,8 +26,21 @@ const ArticlePage = ({ newsData }) => {
 
   return (
     <article className='article-page' key={id}>
+      <Link to='/' className='article-back'>
+        ← All headlines
+      </Link>
+      <p className='story-kicker'>
+        {article.type === 'liveblog' && <span className='live'>Live</span>}
+        {article.sectionName}
+      </p>
       <h1 className='article-headline'>{headline}</h1>
-      {byline && <p className='article-byline'>{byline}</p>}
+      <p className='article-byline'>
+        {byline && <span>{byline}</span>}
+        {byline && article.webPublicationDate && <span aria-hidden='true'> · </span>}
+        {article.webPublicationDate && (
+          <time dateTime={article.webPublicationDate}>{timeAgo(article.webPublicationDate)}</time>
+        )}
+      </p>
       {thumbnail && <img className='article-image' src={thumbnail} alt='' />}
       <div className='article-body'>
         {blocks.map((block, index) =>

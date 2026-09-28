@@ -1,10 +1,8 @@
 function footer() {
-    return (  
-        <>
-            <footer className="fixed-bottom d-flex justify-content-center pt-1">
-                <p>&copy; 2023 Max Blaschek. All Rights Reserved.</p>
-            </footer>
-        </>
+    return (
+        <footer className="site-footer">
+            <p>Powered by the Guardian · &copy; 2023 Max Blaschek</p>
+        </footer>
     );
 }
 
