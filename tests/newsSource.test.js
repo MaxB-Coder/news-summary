@@ -4,7 +4,8 @@ import { getNewsData } from '../src/utils/newsDataService';
 
 vi.mock('axios');
 
-const FIELDS = 'order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText';
+const FIELDS = 'order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText%2Cbody';
+const WITHOUT_BODY = 'order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText';
 
 afterEach(() => {
   vi.resetAllMocks();
@@ -25,5 +26,13 @@ describe('where getNewsData asks for the news', () => {
     axios.get.mockResolvedValueOnce({ data: {} });
     await getNewsData();
     expect(axios.get).toHaveBeenCalledWith(`/api/news/search?${FIELDS}`);
+  });
+
+  it('asks again without the article body if the proxy refuses it', async () => {
+    vi.stubEnv('VITE_NEWS_URL', '/api/news');
+    axios.get.mockRejectedValueOnce({ message: 'Bad request', response: { status: 400 } });
+    axios.get.mockResolvedValueOnce({ data: { response: { results: [] } } });
+    expect(await getNewsData()).toEqual({ response: { results: [] } });
+    expect(axios.get).toHaveBeenLastCalledWith(`/api/news/search?${WITHOUT_BODY}`);
   });
 });

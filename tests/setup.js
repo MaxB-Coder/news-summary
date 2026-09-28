@@ -7,3 +7,5 @@ expect.extend(matchers);
 afterEach(() => {
   cleanup();
 });
+// jsdom doesn't scroll
+window.scrollTo = () => {};

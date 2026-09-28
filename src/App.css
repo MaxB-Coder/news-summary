@@ -35,13 +35,58 @@ footer {
   font-size: xx-small;
 }
 
-@media (min-width: 1200px) {
-  .article-page .card {
-    margin: 0 6rem !important;
-    padding: 3rem !important;
-  }
+/* An article reads like one: a single column at a comfortable width */
+.article-page {
+  max-width: 42rem;
+  margin: 0 auto;
+  /* Clears the fixed header and footer */
+  padding: 6rem 1.25rem 5rem;
+}
 
-  .article-page p {
-    padding: 2rem 4rem !important;
-  }
+.article-headline {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: rgb(240, 240, 240);
+  margin-bottom: 0.75rem;
+}
+
+.article-byline {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(200, 200, 200, 0.65);
+  margin-bottom: 1.5rem;
+}
+
+.article-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.article-body p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgb(215, 215, 215);
+  margin-bottom: 1.15em;
+}
+
+.article-body h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgb(240, 240, 240);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-source {
+  display: inline-block;
+  margin-top: 1rem;
+  color: rgb(240, 240, 240);
+  text-underline-offset: 0.25em;
 }

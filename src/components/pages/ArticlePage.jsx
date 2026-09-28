@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { articleBlocks } from '../../utils/articleBlocks';
 import { processId } from '../../utils/processId';
 
 const ArticlePage = ({ newsData }) => {
@@ -17,28 +18,25 @@ const ArticlePage = ({ newsData }) => {
     (processedData) => processId(processedData?.id) === id
   );
 
-  const thumbnail = article?.fields.thumbnail;
-  const headline = article?.fields.headline;
-  const bodyText = article?.fields.bodyText;
-  const articleLink = article?.webUrl;
+  if (!article) return null;
+
+  const { thumbnail, headline, byline } = article.fields;
+  const blocks = articleBlocks(article.fields);
 
   return (
-    <>
-      <article className='article-page my-5 py-5' key={id}>
-        <div className='card mx-lg-5 px-lg-5 mx-2 px-3 text-center d-flex justify-content-center'>
-          <a className='link-light guardianLink' href={articleLink}>
-            <h3 className='card-body pb-4 guardianLink'>{headline}</h3>
-          </a>
-          <img
-            id='Thumbnail'
-            src={thumbnail}
-            alt='Article Thumbnail'
-            className='card-img-top px-lg-5 px-3 text-center mx-auto w-75 w-lg-50'
-          />
-          <p className='center-text mx-auto pt-4 px-lg-5 px-3'>{bodyText}</p>
-        </div>
-      </article>
-    </>
+    <article className='article-page' key={id}>
+      <h1 className='article-headline'>{headline}</h1>
+      {byline && <p className='article-byline'>{byline}</p>}
+      {thumbnail && <img className='article-image' src={thumbnail} alt='' />}
+      <div className='article-body'>
+        {blocks.map((block, index) =>
+          block.type === 'h2' ? <h2 key={index}>{block.text}</h2> : <p key={index}>{block.text}</p>
+        )}
+      </div>
+      <a className='article-source' href={article.webUrl} target='_blank' rel='noreferrer'>
+        Read it on the Guardian ↗
+      </a>
+    </article>
   );
 };
 
