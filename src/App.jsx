@@ -38,7 +38,7 @@ const App = () => {
             Couldn&apos;t load today&apos;s headlines. Please try again later.
           </p>
         )}
-        <Routes className='content pt-5 mt-5 mb-5'>
+        <Routes>
           <Route path="/" element={<Headlines newsData={newsData} />} />
           <Route path="/article/:id" element={<ArticlePage newsData={newsData} />} />
         </Routes>
