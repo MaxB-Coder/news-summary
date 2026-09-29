@@ -6,7 +6,10 @@ import { articleBlocks } from '../../utils/articleBlocks';
 import { processId } from '../../utils/processId';
 import { timeAgo } from '../../utils/timeAgo';
 
-const ArticlePage = ({ newsData }) => {
+// React 19 ignores defaultProps on function components, so the default lives here
+const NO_NEWS = { response: { results: [] } };
+
+const ArticlePage = ({ newsData = NO_NEWS }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -52,14 +55,6 @@ const ArticlePage = ({ newsData }) => {
       </a>
     </article>
   );
-};
-
-ArticlePage.defaultProps = {
-  newsData: {
-    response: {
-      results: [],
-    },
-  },
 };
 
 ArticlePage.propTypes = {

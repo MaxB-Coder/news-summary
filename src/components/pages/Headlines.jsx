@@ -41,7 +41,10 @@ Story.propTypes = {
   lead: PropTypes.bool,
 };
 
-const Headlines = ({ newsData }) => {
+// React 19 ignores defaultProps on function components, so the default lives here
+const NO_NEWS = { response: { results: [] } };
+
+const Headlines = ({ newsData = NO_NEWS }) => {
   const results = newsData?.response?.results ?? [];
   if (!results.length) return null;
   const [lead, ...rest] = results;
@@ -56,14 +59,6 @@ const Headlines = ({ newsData }) => {
       </div>
     </div>
   );
-};
-
-Headlines.defaultProps = {
-  newsData: {
-    response: {
-      results: [],
-    },
-  },
 };
 
 Headlines.propTypes = {
