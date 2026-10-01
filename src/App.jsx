@@ -14,19 +14,22 @@ const App = () => {
   const [newsData, setNewsData] = useState({});
   const [failed, setFailed] = useState(false);
 
-  const getData = async() => {
-    const data = await getNewsData();
-    if (data instanceof Error) {
-      console.error(data.message);
-      setNewsData([]);
-      setFailed(true);
-    } else {
-      setNewsData(data);
-    }
-  }
-
   useEffect(() => {
-    getData();
+    let current = true;
+    getNewsData().then((data) => {
+      // The page may have gone by the time the news arrives
+      if (!current) return;
+      if (data instanceof Error) {
+        console.error(data.message);
+        setNewsData([]);
+        setFailed(true);
+      } else {
+        setNewsData(data);
+      }
+    });
+    return () => {
+      current = false;
+    };
   }, []);
 
   return (
