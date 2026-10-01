@@ -1,4 +1,3 @@
-/* eslint-env node */
 // Guardian search for the Vercel deployment, with the key kept on the server
 // (the GUARDIAN_KEY environment variable). Same path and rules as
 // maxblaschek.com's proxy, so one build of the app works on both.
