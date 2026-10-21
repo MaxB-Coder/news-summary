@@ -35,7 +35,7 @@
     "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17.13.0",
     "jsdom": "^30.1.1",
-    "vite": "^8.3.1",
+    "vite": "^8.3.4",
     "vitest": "^5.0.2"
   },
   "description": "You'll test-drive a single page application in React that send requests to the Guardian API to get Headline and Article data and display them.",
